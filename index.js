@@ -107,6 +107,7 @@ function createRock(x) {
  * Finally, alert "YOU LOSE!" to the player.
  */
 function endGame() {
+<<<<<<< HEAD
   clearInterval(gameInterval)
 
   ROCKS.forEach(function(rock) { rock.remove() })
@@ -146,6 +147,43 @@ function moveDodgerLeft() {
   if (left > 0) {
     dodger.style.left = `${left - 4}px`
   }
+=======
+  ROCKS.forEach(function(rock) { rock.remove() })
+  document.removeEventListener('keydown', moveDodger)
+  
+  START.innerHTML = 'Play again?'
+  START.style.display = 'inline'
+  
+  return alert("YOU LOSE!")
+}
+
+function moveDodger(e) {
+  // implement me!
+  /**
+   * This function should call `moveDodgerLeft()`
+   * if the left arrow is pressed and `moveDodgerRight()`
+   * if the right arrow is pressed. (Check the constants
+   * we've declared for you above.)
+   * And be sure to use the functions declared below!
+   */
+  document.addEventListener('keydown', function(e) {
+  if (e.which === LEFT_ARROW) {
+    moveDodgerLeft()
+  } else if (e.which === RIGHT_ARROW){
+    moveDodgerRight()
+  }
+})
+}
+
+function moveDodgerLeft() {
+  window.requestAnimationFrame(function() {
+    const left = positionToInteger(DODGER.style.left)
+
+    if (left > 0) {
+      DODGER.style.left = `${left - 4}px`;
+    }
+  })
+>>>>>>> d64e32f88be70e0974890da353fdf5b29b54fa09
 }
 
 function moveDodgerRight() {
